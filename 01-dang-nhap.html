@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập - internship.</title>
+  <!-- Nhúng font Inter giống hệt Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* Khung chứa 2 cột nằm ngang */
+    .container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* CỘT TRÁI (Chiếm ~45% màn hình) */
+    .left-panel {
+      width: 45%;
+      background: #102F35;
+      padding: 52px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 48px;
+    }
+
+    .hero-content {
+      margin-top: 60px;
+    }
+
+    .subtitle {
+      color: #7CD8BF;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .main-title {
+      font-size: 46px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      color: #B0CDCC;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 56px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .feature-num {
+      color: #7CD8BF;
+      font-size: 16px;
+      font-weight: 500;
+      padding-top: 2px;
+    }
+
+    .feature-text h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .feature-text p {
+      color: #B0CDCC;
+      font-size: 13px;
+    }
+
+    .left-footer {
+      color: #8CB5B4;
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* CỘT PHẢI (Chiếm ~55% màn hình) */
+    .right-panel {
+      width: 55%;
+      background: #FFFFFF;
+      padding: 52px 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .form-wrapper {
+      max-width: 566px;
+      width: 100%;
+      margin: auto 0;
+    }
+
+    .welcome-tag {
+      color: #087F72;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .form-title {
+      color: #17343B;
+      font-size: 38px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-desc {
+      color: #687D83;
+      font-size: 15px;
+      margin-bottom: 36px;
+    }
+
+    .input-group {
+      margin-bottom: 24px;
+    }
+
+    .input-group label {
+      display: block;
+      color: #17343B;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .input-group input {
+      width: 100%;
+      height: 54px;
+      background: #F5F8F8;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0 18px;
+      font-size: 14px;
+      color: #17343B;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #087F72;
+      background: #FFFFFF;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 13px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #687D83;
+      cursor: pointer;
+    }
+
+    .forgot-pass {
+      color: #087F72;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .forgot-pass:hover {
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      height: 46px;
+      background: #087F72;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 18px;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #06665b;
+    }
+
+    .notice-box {
+      margin-top: 36px;
+      background: #E7F4F0;
+      border-radius: 8px;
+      padding: 16px 18px;
+      color: #087F72;
+    }
+
+    .notice-box strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .notice-box p {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .right-footer {
+      color: #687D83;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Cột bên trái -->
+    <div class="left-panel">
+      <div class="logo">internship.</div>
+
+      <div class="hero-content">
+        <div class="subtitle">ĐỒNG HÀNH CÙNG THẾ HỆ TIẾP NỐI</div>
+        <h1 class="main-title">Hướng dẫn tận tâm.<br>Phát triển vững vàng.</h1>
+        <p class="description">Một không gian để kết nối, theo dõi và ghi nhận<br>hành trình thực tập của sinh viên tại doanh nghiệp.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-num">01</span>
+            <div class="feature-text">
+              <h3>Tiếp nhận đúng người</h3>
+              <p>Thông tin và kế hoạch thực tập trong tầm tay.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-num">02</span>
+            <div class="feature-text">
+              <h3>Đồng hành đúng lúc</h3>
+              <p>Phản hồi tiến độ, phối hợp xử lý vướng mắc.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-num">03</span>
+            <div class="feature-text">
+              <h3>Đánh giá minh bạch</h3>
+              <p>Ghi nhận năng lực theo tiêu chí của Nhà trường.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="left-footer">NHÀ TRƯỜNG &nbsp;×&nbsp; DOANH NGHIỆP &nbsp;×&nbsp; SINH VIÊN</div>
+    </div>
+
+    <!-- Cột bên phải -->
+    <div class="right-panel">
+      <div></div> <!-- Tạo khoảng trống cân đối phía trên -->
+
+      <div class="form-wrapper">
+        <div class="welcome-tag">CHÀO MỪNG TRỞ LẠI</div>
+        <h2 class="form-title">Đăng nhập</h2>
+        <p class="form-desc">Sử dụng tài khoản doanh nghiệp đã được cấp.</p>
+
+        <!-- Form đăng nhập: bấm nút sẽ chuyển qua trang 02-tong-quan.html -->
+        <form action="02-tong-quan.html">
+          <div class="input-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" id="username" value="phucvlu" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" value="12345678" required>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" checked> Duy trì đăng nhập trên thiết bị này
+            </label>
+            <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="btn-submit">Đăng nhập &nbsp;→</button>
+        </form>
+
+        <div class="notice-box">
+          <strong>Tài khoản được quản lý bởi doanh nghiệp.</strong>
+          <p>Cần hỗ trợ? Liên hệ HR để được cấp hoặc đặt lại mật khẩu.</p>
+        </div>
+      </div>
+
+      <div class="right-footer">© 2026 internship. &nbsp;·&nbsp; Chính sách bảo mật</div>
+    </div>
+  </div>
+
+</body>
+</html>
